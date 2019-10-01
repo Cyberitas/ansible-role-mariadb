@@ -1,0 +1,11 @@
+---
+- name: Install mariadb
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - mariadb-server
+    - mariadb
+
+- name: Ensure service is started
+  service: name=mariadb state=started enabled=yes
