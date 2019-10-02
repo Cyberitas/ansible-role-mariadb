@@ -1,4 +1,6 @@
 ---
 # handlers file
 - name: restart mariadb
-  service: name=mariadb state=restarted
+  systemd:
+    name: mariadb
+    state: reloaded
