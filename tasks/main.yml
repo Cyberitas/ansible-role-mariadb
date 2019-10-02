@@ -1,4 +1,11 @@
 ---
+- name: Configure MariaDB Repository
+  description: MariaDB
+  baseurl: http://yum.mariadb.org/10.2/centos7-amd64
+  gpgkey: https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+  gpgcheck: true
+  state: present
+
 - name: Install mariadb
   yum:
     name: ['mariadb-server', 'mariadb']
