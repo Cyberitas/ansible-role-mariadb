@@ -1,0 +1,18 @@
+# Add manged by Ansible notice
+{{ hash_no_edit_notice }}
+
+[mysqld]
+auto_increment_offset={{ mdb_auto_increment_offset }}
+auto_increment_increment={{ mdb_auto_increment_increment }}
+default-storage-engine={{ mdb_default_storage_engine }}
+{{ mdb_skip_character_set_client_handshake }}
+innodb_file_per_table= {{ mdb_innodb_file_per_table }}
+character-set-server={{ mdb_character-set-server }}
+collation-server ={{ mdb_collation_server }}
+innodb_file_per_table={{ mdb_innodb_file_per_table }}
+max_allowed_packet={{ mdb_max_allowed_packet }}
+datadir={{ mdb_datadir }}
+socket={{ mdb_socket }}
+symbolic-links={{ mdb_symbolic-links }}
+log-error={{ mdb_log-error }}
+pid-file={{ mdb_pid-file }}

@@ -7,5 +7,16 @@
     - mariadb-server
     - mariadb
 
+# Configure Memcached.
+- name: Copy my.cnf configuration.
+  template:
+    src: mmy.cnf.j2
+    dest: /etc/my.cnf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  notify: restart mysql
+
 - name: Ensure service is started
   service: name=mariadb state=started enabled=yes
