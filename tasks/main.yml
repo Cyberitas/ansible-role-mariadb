@@ -1,11 +1,8 @@
 ---
 - name: Install mariadb
   yum:
-    name: "{{ item }}"
-    state: latest
-  with_items:
-    - mariadb-server
-    - mariadb
+    name: ['mariadb-server', 'mariadb']
+    state: present
 
 # Configure Memcached.
 - name: Copy my.cnf configuration.
@@ -16,7 +13,7 @@
     group: root
     mode: 0644
     backup: yes
-  notify: restart mysql
+  notify: restart mariadb
 
 - name: Ensure service is started
   service: name=mariadb state=started enabled=yes
