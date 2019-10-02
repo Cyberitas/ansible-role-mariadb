@@ -12,5 +12,5 @@ mdb_max_allowed_packet: 128M
 mdb_datadir: /var/lib/mysql
 mdb_socket: /var/lib/mysql/mysql.sock
 mdb_symbolic_links: 0
-mdb_log_error: /var/log/mysqld.log
-mdb_pid_file: /var/run/mysqld/mysqld.pid
+mdb_log_error: /var/log/mariadb/mariadb.log
+mdb_pid_file: /var/run/mariadb/mariadb.pid
