@@ -1,4 +1,3 @@
-# Add manged by Ansible notice
 {{ hash_no_edit_notice }}
 
 [mysqld]
@@ -15,7 +14,7 @@ datadir={{ mdb_datadir }}
 socket={{ mdb_socket }}
 symbolic-links={{ mdb_symbolic_links }}
 
-[mysql_safe]
+[mysqld_safe]
 log-error={{ mdb_log_error }}
 pid-file={{ mdb_pid_file }}
 
