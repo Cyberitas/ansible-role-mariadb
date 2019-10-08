@@ -25,4 +25,36 @@
   notify: restart mariadb
 
 - name: Ensure service is started
-  service: name=mariadb state=started enabled=yes
+  service: 
+    name: mariadb 
+    state: started 
+    enabled: yes
+
+- name: Install python-mysql module dependancy.
+  easy_install:
+    name: PyMySQL
+    state: present
+
+- name: Create application databases when they exist
+  mysql_db:
+    name: "{{ item.db_name }}"
+    state: present
+  loop: "{{ application_databases }}"
+  when: application_databases is defined
+
+- name: Import application database schemas if they exist.
+  mysql_db:
+    state: import
+    name: "{{ item.db_name }}"
+    target: "{{ item.db_archive }}"
+  loop: "{{ application_databases }}"
+  when: application_databases is defined
+
+- name: Create database user and privileges.
+  mysql_user:
+    name: "{{ item.db_user }}"
+    password: "{{ item.db_passwd }}"
+    priv: '*.*:ALL'
+    state: present
+  loop: "{{ application_databases }}"
+  when: application_databases is defined
