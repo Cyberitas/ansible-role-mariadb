@@ -43,6 +43,14 @@
   register: db_created
   when: application_databases is defined
 
+- name: Create database user and privileges.
+  mysql_user:
+    name: "{{ item.db_user }}"
+    password: "{{ item.db_passwd }}"
+    priv: "{{ item.db_name }}.*:ALL"
+    state: present
+  loop: "{{ application_databases }}"
+  when: application_databases is defined
 
 - name: Import application database schemas if they exist.
   mysql_db:
@@ -50,13 +58,4 @@
     name: "{{ item.db_name }}"
     target: "{{ item.db_archive }}"
   loop: "{{ application_databases }}"
-  when: application_databases is defined and db_created.changed
-
-- name: Create database user and privileges.
-  mysql_user:
-    name: "{{ item.db_user }}"
-    password: "{{ item.db_passwd }}"
-    priv: '*.*:ALL'
-    state: present
-  loop: "{{ application_databases }}"
-  when: application_databases is defined
+  when: application_databases is defined and enable_devel_mode == True and db_created.changed
