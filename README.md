@@ -23,7 +23,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: jhd3.ansible_role_mariadb }
+         - { role: cyberitas.ansible_role_mariadb }
 
 License
 -------
