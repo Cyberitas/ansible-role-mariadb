@@ -1,5 +1,6 @@
 galaxy_info:
   author: James Dugger
+  role_name: mariadb
   description: MariaDB for Linux
   company: Cyberitas Technologies, LLC
   license: license (MIT)
