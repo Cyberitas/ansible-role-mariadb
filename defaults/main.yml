@@ -6,8 +6,8 @@ mdb_auto_increment_increment: 10
 mdb_default_storage_engine: INNODB
 mdb_skip_character_set_client_handshake: skip-character-set-client-handshake
 mdb_innodb_file_per_table: 1
-mdb_character_set_server: utf8
-mdb_collation_server: utf8_general_ci
+mdb_character_set_server: utf8mb4
+mdb_collation_server: utf8mb4_unicode_ci
 mdb_max_allowed_packet: 128M
 mdb_datadir: /var/lib/mysql
 mdb_socket: /var/lib/mysql/mysql.sock
